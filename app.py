@@ -9,7 +9,12 @@ def generate():
     response = request.json
 
     passlen = response['passlen']
-    password = gen_password(passlen)
+
+    if 'chars' in response:
+        chars = response['chars']
+        password = gen_password(passlen, chars=chars)
+    else:
+        password = gen_password(passlen)
 
     return jsonify(
         {'response': password, 'passlen': passlen}
