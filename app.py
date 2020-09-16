@@ -5,6 +5,17 @@ from password_generator import gen_password
 
 app = Flask(__name__)
 
+
+@app.route('/')
+def index():
+    welcome_msg = (
+        'This is passgen API. <br>'
+        'Read the docs here: <br>'
+        'https://github.com/varvara-krasavina/password_generator'
+    )
+    return welcome_msg
+
+
 @app.route('/passgen/api/v1.0/', methods=['GET'])
 def generate():
     response = request.json
@@ -31,6 +42,7 @@ def generate():
     return jsonify(
         {'response': password, 'passlen': passlen}
     ), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
