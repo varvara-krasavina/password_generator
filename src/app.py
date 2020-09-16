@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import logging
 
-from password_generator import gen_password
+from .password_generator import gen_password
 
 app = Flask(__name__)
 
