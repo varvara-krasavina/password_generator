@@ -5,7 +5,7 @@ from password_generator import gen_password
 app = Flask(__name__)
 
 @app.route('/passgen/api/v1.0/', methods=['GET'])
-def ttt():
+def generate():
     response = request.json
 
     passlen = response['passlen']
