@@ -1,3 +1,5 @@
+import logging
+
 import secrets
 import string
 
@@ -19,8 +21,14 @@ class Generator:
         Returns:
         str:Generated Password
         """
-        password = ''.join(
-            secrets.choice(self.alphabet)
-            for _ in range(passlen)
-            )
-        return password
+        try:
+            password = ''.join(
+                secrets.choice(self.alphabet)
+                for _ in range(passlen)
+                )
+            return {'response': password}
+
+        except Exception as e:
+            error_msg = 'Oops! En error occurred: %s.' % e
+            logging.error(error_msg)
+            return {'response': None, 'error': error_msg}

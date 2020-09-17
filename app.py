@@ -37,11 +37,21 @@ def generate():
 
     passlen = response['passlen']
     password = generator.generate(passlen)
+    if 'error' in password:
+        return jsonify(
+            {
+                'response': None,
+                'passlen': passlen,
+                'error': password['error']
+                }
+        )
 
     logging.info("The request has succeeded.")
 
     return jsonify(
-        {'response': password, 'passlen': passlen}
+        {
+            'response': password['response'],
+            'passlen': passlen}
     ), 200
 
 
