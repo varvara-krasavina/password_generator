@@ -1,7 +1,7 @@
 import random
 import string
 
-CHARS = string.ascii_letters + string.digits
+CHARS = string.ascii_letters + string.digits + string.punctuation
 
 
 class Generator:
