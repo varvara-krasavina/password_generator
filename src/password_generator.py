@@ -1,7 +1,7 @@
 import random
 import string
 
-CHARS = string.ascii_uppercase + string.ascii_lowercase + string.digits
+CHARS = string.ascii_letters + string.digits
 
 
 class Generator:
