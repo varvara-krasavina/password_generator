@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request
 import logging
 
-from .password_generator import gen_password
+from .password_generator import Generator
 
 app = Flask(__name__)
 
+generator = Generator()
 
 @app.route('/')
 def index():
@@ -35,9 +36,9 @@ def generate():
 
     if 'chars' in response:
         chars = response['chars']
-        password = gen_password(passlen, chars=chars)
+        password = generator.generate(passlen, chars=chars)
     else:
-        password = gen_password(passlen)
+        password = generator.generate(passlen)
 
     return jsonify(
         {'response': password, 'passlen': passlen}
