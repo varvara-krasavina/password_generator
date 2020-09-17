@@ -1,4 +1,4 @@
-import random
+import secrets
 import string
 
 CHARS = string.ascii_letters + string.digits + string.punctuation
@@ -20,7 +20,7 @@ class Generator:
         str:Generated Password
         """
         password = ''.join(
-            random.choice(chars)
+            secrets.choice(chars)
             for _ in range(passlen)
         )
 
