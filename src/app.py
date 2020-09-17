@@ -34,12 +34,12 @@ def generate():
         ), 200
 
     passlen = response['passlen']
+    chars = response.get('chars', None)
 
-    if 'chars' in response:
-        chars = response['chars']
-        password = generator.generate(passlen, chars=chars)
-    else:
+    if chars is None:
         password = generator.generate(passlen)
+    else:
+        password = generator.generate(passlen, chars=chars)
 
     return jsonify(
         {'response': password, 'passlen': passlen}
