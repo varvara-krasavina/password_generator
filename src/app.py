@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 generator = Generator()
 
+
 @app.route('/')
 def index():
     welcome_msg = (

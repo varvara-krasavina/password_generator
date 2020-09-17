@@ -9,7 +9,7 @@ class Generator:
 
     def __init__(self):
         pass
-    
+
     def generate(self, passlen: int, chars: str = CHARS) -> str:
         """Generate random password
 
