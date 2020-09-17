@@ -22,11 +22,14 @@ def index():
 
 @app.route('/passgen/api/v1.0/', methods=['GET'])
 def generate():
+
     response = request.json
 
     if not response or 'passlen' not in response:
+
         error_msg = "Missing required argument 'passlen'."
         logging.error(error_msg)
+
         return jsonify(
             {
                 'response': None,
@@ -36,7 +39,9 @@ def generate():
         ), 200
 
     passlen = response['passlen']
+
     password = generator.generate(passlen)
+
     if 'error' in password:
         return jsonify(
             {
