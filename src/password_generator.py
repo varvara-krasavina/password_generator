@@ -1,13 +1,13 @@
 import secrets
 import string
 
-CHARS = string.ascii_letters + string.digits + string.punctuation
+ALPHABET = string.ascii_letters + string.digits + string.punctuation
 
 
 class Generator:
 
-    def __init__(self, chars: str = CHARS):
-        self.default_chars = chars
+    def __init__(self, alphabet: str = ALPHABET):
+        self.alphabet = alphabet
 
     def generate(self, passlen: int) -> str:
         """Generate random password
@@ -20,7 +20,7 @@ class Generator:
         str:Generated Password
         """
         password = ''.join(
-            secrets.choice(self.default_chars)
+            secrets.choice(self.alphabet)
             for _ in range(passlen)
             )
         return password
