@@ -3,6 +3,8 @@ import logging
 
 from .password_generator import Generator
 
+logging.getLogger().setLevel(logging.INFO)
+
 app = Flask(__name__)
 
 generator = Generator()
@@ -40,6 +42,8 @@ def generate():
         password = generator.generate(passlen)
     else:
         password = generator.generate(passlen, chars=chars)
+
+    logging.info("The request has succeeded.")
 
     return jsonify(
         {'response': password, 'passlen': passlen}
