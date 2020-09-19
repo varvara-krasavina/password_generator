@@ -51,7 +51,7 @@ def generate():
                 }
         )
 
-    logging.info("The request has succeeded.")
+    logging.info("Successful request.")
 
     return jsonify(
         {

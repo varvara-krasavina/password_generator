@@ -7,20 +7,27 @@ ALPHABET = string.ascii_letters + string.digits + string.punctuation
 
 
 class Generator:
+    """Generates a random password of given length.
+
+    """
 
     def __init__(self, alphabet: str = ALPHABET):
         self.alphabet = alphabet
 
     def generate(self, passlen: int) -> str:
-        """Generate random password
+        """Generate random chars and form a string.
+        Default alphabet is ascii + digits + punctuation marks.
 
         Parameters:
         passlen (int): Password length
-        chars (str): Characters to choose from, default: ascii + digits
 
         Returns:
-        str:Generated Password
+        {
+        response (str or None): Password
+        error (str, optional): Error description
+        }
         """
+
         try:
             password = ''.join(
                 secrets.choice(self.alphabet)
@@ -29,6 +36,6 @@ class Generator:
             return {'response': password}
 
         except Exception as e:
-            error_msg = 'Oops! En error occurred: %s.' % e
+            error_msg = 'Oops! An error occurred: %s.' % e
             logging.error(error_msg)
             return {'response': None, 'error': error_msg}
