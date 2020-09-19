@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import logging
 
-from .password_generator import Generator
+from password_generator import Generator
 
 logging.getLogger().setLevel(logging.INFO)
 
@@ -22,11 +22,14 @@ def index():
 
 @app.route('/passgen/api/v1.0/', methods=['GET'])
 def generate():
+
     response = request.json
 
     if not response or 'passlen' not in response:
+
         error_msg = "Missing required argument 'passlen'."
         logging.error(error_msg)
+
         return jsonify(
             {
                 'response': None,
@@ -36,12 +39,24 @@ def generate():
         ), 200
 
     passlen = response['passlen']
+
     password = generator.generate(passlen)
 
-    logging.info("The request has succeeded.")
+    if 'error' in password:
+        return jsonify(
+            {
+                'response': None,
+                'passlen': passlen,
+                'error': password['error']
+                }
+        )
+
+    logging.info("Successful request.")
 
     return jsonify(
-        {'response': password, 'passlen': passlen}
+        {
+            'response': password['response'],
+            'passlen': passlen}
     ), 200
 
 
