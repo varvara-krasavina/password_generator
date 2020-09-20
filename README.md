@@ -4,7 +4,7 @@ A simple API to generate a random password.
 
 # API description
 
-GET request to https://krasavina-passgen.herokuapp.com/passgen/api/v1.0/
+GET request to https://varvara-passgen.herokuapp.com/passgen/api/v1.0/
 <br>
 <br>
 **Parameters:**
@@ -24,14 +24,14 @@ error (str, optional): Error description
 
 1.
 ```
-$ curl -i -H "Content-Type: application/json" -X GET -d '{"passlen": 10}' https://krasavina-passgen.herokuapp.com/passgen/api/v1.0/
+$ curl -i -H "Content-Type: application/json" -X GET -d '{"passlen": 10}' https://varvara-passgen.herokuapp.com/passgen/api/v1.0/
 >> {"passlen":10,"response":"?'^-6\"Li/'"}
 ```
 
 2.
 
 ```
-$ curl -i -H "Content-Type: application/json" -X GET -d '{"passlen": 20}' https://
+$ curl -i -H "Content-Type: application/json" -X GET -d '{"passlen": 20}' https://varvara-passgen.herokuapp.com/passgen/api/v1.0/
 >> {"passlen":20,"response":"HX@Kiv0=[%sUlBGzlL7n"}
 ```
 
