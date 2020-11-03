@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import logging
 
-from password_generator import Generator
+from .password_generator import Generator
 
 logging.getLogger().setLevel(logging.INFO)
 
